@@ -1,0 +1,21 @@
+{
+  "name": "shipme-mcp-servers",
+  "version": "1.0.0",
+  "description": "MCP servers for ShipMe infrastructure provisioning",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "@octokit/rest": "^20.0.2",
+    "libsodium-wrappers": "^0.7.13"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/libsodium-wrappers": "^0.7.14",
+    "typescript": "^5.3.3"
+  }
+}

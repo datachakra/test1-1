@@ -1,0 +1,78 @@
+{
+  "name": "ShipMe Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        "mcp.servers": {
+          "github": {
+            "command": "node",
+            "args": ["${containerWorkspaceFolder}/mcp-servers/dist/github/index.js"],
+            "env": {
+              "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}"
+            }
+          },
+          "supabase": {
+            "command": "node",
+            "args": ["${containerWorkspaceFolder}/mcp-servers/dist/supabase/index.js"],
+            "env": {
+              "SUPABASE_ACCESS_TOKEN": "${localEnv:SUPABASE_ACCESS_TOKEN}",
+              "SUPABASE_ORG_ID": "${localEnv:SUPABASE_ORG_ID}"
+            }
+          },
+          "netlify": {
+            "command": "node",
+            "args": ["${containerWorkspaceFolder}/mcp-servers/dist/netlify/index.js"],
+            "env": {
+              "NETLIFY_AUTH_TOKEN": "${localEnv:NETLIFY_AUTH_TOKEN}"
+            }
+          }
+        },
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "task.allowAutomaticTasks": "on"
+      }
+    }
+  },
+
+  "forwardPorts": [3000],
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postAttachCommand": "bash .devcontainer/auto-launch-claude.sh",
+
+  "remoteUser": "node",
+
+  "secrets": {
+    "GITHUB_TOKEN": {
+      "description": "GitHub Personal Access Token for repository operations",
+      "documentationUrl": "https://github.com/settings/tokens"
+    },
+    "SUPABASE_ACCESS_TOKEN": {
+      "description": "Supabase Management API token for project creation",
+      "documentationUrl": "https://supabase.com/dashboard/account/tokens"
+    },
+    "SUPABASE_ORG_ID": {
+      "description": "Supabase Organization ID (optional - will use first available if not provided)",
+      "documentationUrl": "https://supabase.com/dashboard"
+    },
+    "NETLIFY_AUTH_TOKEN": {
+      "description": "Netlify Personal Access Token for site deployment",
+      "documentationUrl": "https://app.netlify.com/user/applications"
+    },
+    "ANTHROPIC_API_KEY": {
+      "description": "Anthropic API key for Claude Code (auto-provided by ShipMe, or bring your own)",
+      "documentationUrl": "https://console.anthropic.com/settings/keys"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "my-project",
+  "description": "A new project created with ShipMe",
+  "stack": {
+    "framework": "Next.js",
+    "database": "Supabase",
+    "hosting": "Netlify",
+    "auth": ["github"]
+  },
+  "createdAt": "2026-02-05T00:00:00.000Z",
+  "createdBy": "shipme.dev",
+  "version": "2.0.0",
+  "_note": "This file is automatically populated by shipme.dev when creating your repository"
+}

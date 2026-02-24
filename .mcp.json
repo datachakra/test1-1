@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "node",
+      "args": ["./mcp-servers/dist/github/index.js"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "supabase": {
+      "command": "node",
+      "args": ["./mcp-servers/dist/supabase/index.js"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}",
+        "SUPABASE_ORG_ID": "${SUPABASE_ORG_ID}"
+      }
+    },
+    "netlify": {
+      "command": "node",
+      "args": ["./mcp-servers/dist/netlify/index.js"],
+      "env": {
+        "NETLIFY_AUTH_TOKEN": "${NETLIFY_AUTH_TOKEN}"
+      }
+    }
+  }
+}
